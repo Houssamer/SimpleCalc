@@ -7,7 +7,7 @@ public class Calculator {
     JFrame f;
     JPanel p;
     JTextField txt;
-    String s0, s1, s2;
+    String s0, s1, s2, operation;
     Operations operations = new Operations();
 
     //numbers
@@ -39,6 +39,9 @@ public class Calculator {
         p = new JPanel();
         p.setBounds(20, 125, 250, 300);
 
+        //strings
+
+        s0=""; s1=""; s2="";
 
         //text field and paramteres
         txt = new JTextField();
@@ -62,7 +65,7 @@ public class Calculator {
         createButton("-", bs, 35, 195);
         createButton("/", bd, 35, 255);
         createButton("x", bm, 35, 315);
-        createButton("=", beq, 375, 100);
+        createButton("=", beq, 125, 375);
         createButton("C", bc, 215, 315);
         createButton(".", point, 95, 315);
 
@@ -87,9 +90,154 @@ public class Calculator {
 
     public class Operations implements ActionListener {
 
+        public void add() {
+            if (s1.equals("")) {
+                s1 = s0;
+                s0 = "";
+            } else {
+                equal();
+            }
+            operation = "+";
+        }
+
+        public void minus() {
+            if (s1.equals("")) {
+                s1 = s0;
+                s0 = "";
+            } else {
+                equal();
+            }
+            operation = "-";
+        }
+
+        public void div() {
+            if (s1.equals("")) {
+                s1 = s0;
+                s0 = "";
+            } else {
+                equal();
+            }
+            operation = "/";
+        }
+
+        public void mult() {
+            if (s1.equals("")) {
+                s1 = s0;
+                s0 = "";
+            } else {
+                equal();
+            }
+            operation = "x";
+        }
+
+
+        public void equal() {
+            Double resultat;
+            switch (operation) {
+                case "+":
+                    resultat = Double.parseDouble(s1) + Double.parseDouble(s0);
+                    s2 = resultat.toString();
+                    txt.setText(s2);
+                    s1 = "";
+                    s0 = s2;
+                    s2 = "";
+                    break;
+                case "-":
+                    resultat = Double.parseDouble(s1) - Double.parseDouble(s0);
+                    s2 = resultat.toString();
+                    txt.setText(s2);
+                    s1 = "";
+                    s0 = s2;
+                    s2 = "";
+                    break;
+                case "/":
+                    resultat = Double.parseDouble(s1) / Double.parseDouble(s0);
+                    s2 = resultat.toString();
+                    txt.setText(s2);
+                    s0 = s2;
+                    s1 = "";
+                    s2 = "";
+                    break;
+                case "x":
+                    resultat = Double.parseDouble(s1) * Double.parseDouble(s0);
+                    s2 = resultat.toString();
+                    txt.setText(s2);
+                    s0 = s2;
+                    s1 = "";
+                    s2 = "";
+                    break;
+                default:
+                    new JOptionPane().showMessageDialog(f, "Wrong operation");
+                    break;
+            }
+        }
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+            switch (e.getActionCommand()) {
+                case "0":
+                    s0 += "0";
+                    txt.setText(s0);
+                    break;
+                case "1":
+                    s0 += "1";
+                    txt.setText(s0);
+                    break;
+                case "2":
+                    s0 += "2";
+                    txt.setText(s0);
+                    break;
+                case "3":
+                    s0 += "3";
+                    txt.setText(s0);
+                    break;
+                case "4":
+                    s0 += "4";
+                    txt.setText(s0);
+                    break;
+                case "5":
+                    s0 += "5";
+                    txt.setText(s0);
+                    break;
+                case "6":
+                    s0 += "6";
+                    txt.setText(s0);
+                    break;
+                case "7":
+                    s0 += "7";
+                    txt.setText(s0);
+                    break;
+                case "8":
+                    s0 += "8";
+                    txt.setText(s0);
+                    break;
+                case "9":
+                    s0 += "9";
+                    txt.setText(s0);
+                    break;
+                case "+":
+                    add();
+                    break;
+                case "-":
+                    minus();
+                    break;
+                case "x":
+                    mult();
+                    break;
+                case "/":
+                    div();
+                    break;
+                case "=":
+                    equal();
+                    break;
+                case ".":
+                    System.out.println("point");
+                    break;
+                case "C":
+                    System.out.println("C");
+                    break;
+                default:
+            }
 
         }
 
