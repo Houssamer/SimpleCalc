@@ -138,37 +138,36 @@ public class Calculator {
                     resultat = Double.parseDouble(s1) + Double.parseDouble(s0);
                     s2 = resultat.toString();
                     txt.setText(s2);
-                    s1 = "";
-                    s0 = s2;
+                    s1 = s2;
+                    s0 = "";
                     s2 = "";
                     break;
                 case "-":
                     resultat = Double.parseDouble(s1) - Double.parseDouble(s0);
                     s2 = resultat.toString();
                     txt.setText(s2);
-                    s1 = "";
-                    s0 = s2;
+                    s1 = s2;
+                    s0 = "";
                     s2 = "";
                     break;
                 case "/":
                     resultat = Double.parseDouble(s1) / Double.parseDouble(s0);
                     s2 = resultat.toString();
                     txt.setText(s2);
-                    s0 = s2;
-                    s1 = "";
+                    s0 = "";
+                    s1 = s2;
                     s2 = "";
                     break;
                 case "x":
                     resultat = Double.parseDouble(s1) * Double.parseDouble(s0);
                     s2 = resultat.toString();
                     txt.setText(s2);
-                    s0 = s2;
-                    s1 = "";
+                    s0 = "";
+                    s1 = s2;
                     s2 = "";
                     break;
                 default:
                     new JOptionPane().showMessageDialog(f, "Wrong operation");
-                    break;
             }
         }
 
@@ -231,10 +230,12 @@ public class Calculator {
                     equal();
                     break;
                 case ".":
-                    System.out.println("point");
+                    s0 +=".";
+                    txt.setText(s0);
                     break;
                 case "C":
-                    System.out.println("C");
+                    s0 = s1 = s2 = "";
+                    txt.setText("");
                     break;
                 default:
             }
